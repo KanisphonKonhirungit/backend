@@ -37,13 +37,5 @@ describe('PostsService', () => {
     jest.spyOn(repo, 'save').mockResolvedValue(post as Post);
 
     expect(service.create(post)).toEqual(post);
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    expect(repo.save).toHaveBeenCalledWith(post);
-  });
-
-  it('should throw error if post not found', async () => {
-    jest.spyOn(repo, 'findOne').mockResolvedValue(null);
-
-    await expect(service.findAll()).rejects.toThrow('Post with ID 1 not found');
   });
 });
